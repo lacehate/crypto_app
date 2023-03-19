@@ -1,0 +1,24 @@
+.mainBtn,
+.disabled {
+    background: #e75626;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    padding: 0 24px;
+    height: 39px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 120%;
+    color: #ffffff;
+    font-family: "Bebas Neue";
+    font-weight: bold;
+    font-style: normal;
+}
+
+.disabled {
+    pointer-events: none !important;
+    opacity: 0.5;
+}

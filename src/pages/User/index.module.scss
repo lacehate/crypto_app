@@ -1,0 +1,40 @@
+.details {
+    position: relative;
+    padding-top: 110px;
+    padding-left: 64px;
+    overflow-x: hidden;
+    height: calc(100vh - 58px);
+    h1 {
+        font-family: "Bebas Neue";
+        font-weight: bold;
+        font-size: 48px;
+        line-height: 120%;
+        color: #ffffff;
+        margin-bottom: 48px;
+    }
+    &__info {
+        margin-bottom: 22px;
+        p {
+            font-family: "Bebas Neue";
+            font-weight: bold;
+            line-height: 120%;
+            &:first-of-type {
+                font-size: 24px;
+                color: #ffffff;
+            }
+            &:last-of-type {
+                font-size: 32px;
+                color: #e75626;
+                margin-top: 8px;
+            }
+        }
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+    img {
+        position: absolute;
+        top: 49px;
+        right: -199px;
+    }
+}

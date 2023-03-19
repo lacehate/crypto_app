@@ -1,0 +1,188 @@
+.home {
+    padding: 0 64px;
+}
+
+.intro {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: 202px;
+    padding-bottom: 60px;
+    &__hero {
+        &__title {
+            position: relative;
+            .planet {
+                position: relative;
+                background: url("../../assets/img/planetHome.png");
+                background-position: top right;
+                background-repeat: no-repeat;
+                background-size: 1177px 962px;
+                img {
+                    position: absolute;
+                    z-index: -1;
+                    top: -127px;
+                    right: -125px;
+                }
+                &__orbit {
+                    position: absolute;
+                    z-index: 1;
+                    top: -87px;
+                    right: -91px;
+                }
+                &__info {
+                    font-family: "Bebas Neue";
+                    font-weight: bold;
+                    font-size: 14px;
+                    line-height: 120%;
+                    color: #171719;
+                    padding: 8px 12px;
+                    width: 80px;
+                    height: 30px;
+                    background: #ffffff;
+                    border-radius: 15px;
+                    position: absolute;
+                    right: 140px;
+                    top: -98px;
+                    z-index: 1;
+                    &::after {
+                        content: "";
+                        display: inline-block;
+                        position: absolute;
+                        background: url("../../assets/img/IconDot.png");
+                        width: 24px;
+                        height: 24px;
+                        top: 2px;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                    }
+                }
+            }
+            h1 {
+                min-height: 332px;
+                font-family: "Bebas Neue";
+                font-weight: bold;
+                font-size: 120px;
+                line-height: 120%;
+                color: transparent;
+                margin-bottom: 15px;
+                max-width: 1007px;
+                background-image: url("../../assets/img/orangePlanet.png");
+                background-position: top right;
+                background-repeat: no-repeat;
+                background-size: 1177px 962px;
+                background-clip: text;
+                -webkit-background-clip: text;
+                span {
+                    -webkit-text-stroke: 1px white;
+                    color: black;
+                }
+            }
+        }
+        p {
+            max-width: 421px;
+            font-family: "Avenir Next Cyr";
+            font-size: 16px;
+            line-height: 120%;
+            color: #ffffff;
+        }
+    }
+
+    &__stats {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        h1 {
+            text-align: center;
+            font-family: "Bebas Neue";
+            font-weight: bold;
+            font-size: 32px;
+            line-height: 120%;
+            letter-spacing: 1px;
+            color: #ffffff;
+            margin-bottom: 42px;
+        }
+        &__block {
+            width: 200px;
+            border-bottom: 0.5px solid #d2c4c4;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            p {
+                text-align: center;
+                font-family: "Bebas Neue";
+                line-height: 120%;
+                letter-spacing: 1px;
+                &:first-of-type {
+                    font-weight: bold;
+                    font-size: 28px;
+                    color: #e75626;
+                    margin-bottom: 12px;
+                }
+                &:last-of-type {
+                    font-size: 18px;
+                    color: #ffffff;
+                }
+            }
+            &:last-of-type {
+                border-bottom: none;
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.users {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: 48px;
+    min-height: 797px;
+    h1 {
+        font-family: "Bebas Neue";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 120%;
+    }
+    &__table {
+        &__title {
+            color: #fff;
+            margin-bottom: 18px;
+        }
+    }
+    &__form {
+        max-width: 421px;
+        &__title {
+            color: #e75626;
+            margin-bottom: 18px;
+        }
+        &__description {
+            font-family: "Avenir Next Cyr";
+            font-size: 16px;
+            line-height: 120%;
+            color: #ffffff;
+            margin-bottom: 18px;
+        }
+        &__label {
+            font-family: "Bebas Neue";
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 120%;
+            color: #ffffff;
+            margin-bottom: 8px;
+            margin-top: 18px;
+        }
+        &__data {
+            font-family: "Bebas Neue";
+            font-weight: bold;
+            font-size: 32px;
+            line-height: 120%;
+            color: #e75626;
+            margin-bottom: 22px;
+        }
+        button {
+            margin-top: 24px;
+        }
+    }
+}

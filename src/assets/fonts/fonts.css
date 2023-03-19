@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("./BebasNeue/BebasNeueBold.woff2") format("woff2"),
+    url("./BebasNeue/BebasNeueBold.woff") format("woff"),
+    url("./BebasNeue/BebasNeueBold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("./BebasNeue/BebasNeueRegular.woff2") format("woff2"),
+    url("./BebasNeue/BebasNeueRegular.woff") format("woff"),
+    url("./BebasNeue/BebasNeueRegular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Avenir Next Cyr";
+  src: url("./AventirNextCyr/AvenirNextCyr-Regular.woff2") format("woff2"),
+    url("./AventirNextCyr/AvenirNextCyr-Regular.woff") format("woff"),
+    url("./AventirNextCyr/AvenirNextCyr-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./Inter/Inter-Regular.woff2") format("woff2"),
+    url("./Inter/Inter-Regular.woff") format("woff"),
+    url("./Inter/Inter-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
