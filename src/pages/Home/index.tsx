@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classes from "./index.module.scss";
 import Input from "../../elements/Input";
 import Button from "../../elements/Button";
@@ -9,6 +9,9 @@ import orbitsImg from "../../assets/img/orbits.png";
 import Orbit from "../../components/Orbit";
 import useSWR from "swr";
 
+import { useSelector, useDispatch } from 'react-redux'
+import { setUsername, setEmail } from '../../store/user';
+
 function Home() {
     const fetcher = (res: RequestInfo | URL) =>
         fetch(res).then((res) => res.json());
@@ -17,17 +20,53 @@ function Home() {
         fetcher
     );
 
+    const user = useSelector((state: any) => state.user);
+    const dispatch = useDispatch()
     const { account } = useEthers();
-    const [user, setUser] = useState({ username: "", email: "" });
     const [users, setUsers] = useState([] as any);
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
+    const [isSubmited, setIsSubmited] = useState(false);
 
+    const [validation, setValidation] = useState({
+        username: true,
+        email: true,
+    });
+    
     const deleteUser = (id: Number) => {
+        dispatch(setUsername(""));
+        dispatch(setEmail(""));
+        setIsSubmited(false);
         setUsers(users.filter((user: { id: Number }) => user.id !== id));
     };
+
     const addUser = () => {
-        setUsers([{ ...user, address: account }, ...data.items]);
+        if (!account) {
+            setIsOpen(true);
+            return;
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        const validName = Boolean(user.username);
+        const validEmail = Boolean(emailRegex.test(user.email));
+
+        setValidation({ username: validName, email: validEmail });
+
+        if (validName && validEmail) {
+            setUsers([{ ...user, address: account }, ...data.items]);
+            setIsSubmited(true);
+        }
     };
+
+    useEffect(() => {
+        setIsOpen(!Boolean(account));
+    }, [account])
+
+    useEffect(() => {
+        if (user.username && user.email) {
+            setIsSubmited(true);
+            setUsers([{ ...user, address: account }, ...data.items]);
+        }
+    }, []);
 
     return (
         <div className={classes.home}>
@@ -85,40 +124,58 @@ function Home() {
                         exercitation ullamco laboris nisi ut aliquip ex ea
                         commodo consequat.
                     </p>
-
                     <p className={classes.users__form__label}>Name</p>
-                    {users.length !== 0 ? (
+                    {isSubmited ? (
                         <h1 className={classes.users__form__data}>
                             {user.username}
                         </h1>
                     ) : (
-                        <Input
-                            type="text"
-                            placeholder={
-                                "We will display your name in participation list"
-                            }
-                            onChange={(val) =>
-                                setUser({ ...user, username: val })
-                            }
-                        />
+                        <div className={!validation.username ? classes.users__form__input : ""}>
+                            <Input
+                                type="text"
+                                placeholder={
+                                    "We will display your name in participation list"
+                                }
+                                onChange={(val) => {
+                                    setValidation((prev) => ({
+                                        ...prev,
+                                        username: true,
+                                    }));
+                                    dispatch(setUsername(val))
+                                }}
+                            />
+                            {!validation.username && (
+                                <span>Name cannot be empty</span>
+                            )}
+                        </div>
                     )}
                     <p className={classes.users__form__label}>Email</p>
-                    {users.length ? (
+                    {isSubmited ? (
                         <h1 className={classes.users__form__data}>
                             {user.email}
                         </h1>
                     ) : (
-                        <Input
-                            type="email"
-                            placeholder={
-                                "We will display your email in participation list "
-                            }
-                            onChange={(val) => setUser({ ...user, email: val })}
-                        />
+                        <div className={!validation.email ? classes.users__form__input : ""}
+                        >
+                            <Input
+                                type="email"
+                                placeholder={
+                                    "We will display your email in participation list "
+                                }
+                                onChange={(val) => {
+                                    setValidation((prev) => ({
+                                        ...prev,
+                                        email: true,
+                                    }));
+                                    dispatch(setEmail(val))
+                                }}
+                            />
+                            {!validation.email && <span>Invalid Email</span>}
+                        </div>
                     )}
 
                     <Button
-                        disabled={users.length}
+                        disabled={isSubmited}
                         text={"Get early access"}
                         onClick={() => addUser()}
                     />

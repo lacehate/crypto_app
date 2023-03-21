@@ -173,6 +173,17 @@
             margin-bottom: 8px;
             margin-top: 18px;
         }
+        &__input {
+            input {
+                border: 1px solid red;
+            }
+            span {
+                font-family: "Avenir Next Cyr";
+                color: red;
+                margin-top: 12px;
+                display: block;
+            }
+        }
         &__data {
             font-family: "Bebas Neue";
             font-weight: bold;

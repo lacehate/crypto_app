@@ -3,15 +3,7 @@
     align-items: center;
     justify-content: center;
     svg {
-        &:first-of-type {
-            transform: scaleX(-1);
-            path {
-                animation-delay: 3.8s;
-            }
-        }
-        &:last-of-type {
-            transform: scaleY(-1) translateX(-6px);
-        }
+        transform: scaleY(-1) translateX(-6px);
         path {
             stroke-dasharray: 1000;
             stroke-dashoffset: 1000;
